@@ -20,8 +20,8 @@ export default function SigIn() {
       >
         <Stack spacing='4'>
 
-          <Input name="email" type="email" label="E-mail"/>
-          <Input name="password" type="password" label="Password"/>
+          <Input name="email" type="email" label="E-mail" />
+          <Input name="password" type="password" label="Password" />
 
         </Stack>
         <Button

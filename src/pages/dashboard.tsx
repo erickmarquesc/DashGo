@@ -17,24 +17,24 @@ const options = { // estilo do gráfico
     },
     foreColor: theme.colors.gray[500],
   },
-  grid:{
-    show:false,
+  grid: {
+    show: false,
   },
-  dataLabels:{
-    enabled:false,
+  dataLabels: {
+    enabled: false,
   },
-  tooltip:{
-    enabled:false,
+  tooltip: {
+    enabled: false,
   },
-  xaxis:{
-    type:'datetime',
-    axisBorder:{
+  xaxis: {
+    type: 'datetime',
+    axisBorder: {
       color: theme.colors.gray[600]
     },
-    axixTicks:{
+    axixTicks: {
       color: theme.colors.gray[600]
     },
-    categories:[
+    categories: [
       '2021-03-18T00:00:00.000Z',
       '2021-03-19T00:00:00.000Z',
       '2021-03-20T00:00:00.000Z',
@@ -44,13 +44,13 @@ const options = { // estilo do gráfico
       '2021-03-24T00:00:00.000Z',
     ]
   },
-  fill:{
-    opacity:0.3,
-    type:'gradient',
-    gradient:{
+  fill: {
+    opacity: 0.3,
+    type: 'gradient',
+    gradient: {
       shade: 'dark',
-      opacityFrom:0.7,
-      opacityTo:0.3,
+      opacityFrom: 0.7,
+      opacityTo: 0.3,
     },
   }
 }

@@ -1,7 +1,10 @@
-import { Box, Button, Checkbox, Flex, Heading, Icon, Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
+import { Box, Checkbox, Flex, Heading, Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
+import { CTAButton } from "../../components/CTAButton";
 import { Header } from "../../components/Header";
+import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
+
 
 export default function UserList() {
   return (
@@ -14,54 +17,41 @@ export default function UserList() {
         <Box bg="gray.800" flex="1" borderRadius={8} p="8">
           <Flex mb="8" justifyContent="space-between" align="center">
             <Heading size="lg" fontWeight="normal">Usuários</Heading>
-            <Button
-              as="a"
-              size="sm"
-              fontSize="sm"
-              colorScheme="pink"
-              leftIcon={<Icon as={RiAddLine} 
-              fontSize="20"/>}
-            >
-              Criar usuário
-            </Button>
+            <CTAButton icon={RiAddLine}>Criar usuário</CTAButton>
           </Flex>
 
-          <Table colorScheme="whiteAlpha">
-            <Thead>
-              <Th px="6" color="gray.300" width="8">
-                <Checkbox colorScheme="pink" />
-              </Th>
-              <Th>Usuário</Th>
-              <Th>Data de cadastro</Th>
-              <Th>Editar</Th>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td px="6">
+          <Table colorScheme="whiteAlpha" suppressHydrationWarning={true}>
+            <>
+
+              <Thead>
+                <Th px="6" color="gray.300" width="8">
                   <Checkbox colorScheme="pink" />
-                </Td>
-                <Td>
-                  <Box>
-                    <Text fontWeight="bold">Erick Marques</Text>
-                    <Text fontSize="sm" color="gray.300">erick.marquesc@hotmail.com</Text>
-                  </Box>
-                </Td>
-                <Td>19.Maio.2022</Td>
-                <Td>
-                  <Button
-                    as="a"
-                    size="sm"
-                    fontSize="sm"
-                    colorScheme="pink"
-                    leftIcon={<Icon as={RiPencilLine} 
-                    fontSize="18"/>}
-                  >
-                    Editar
-                    </Button>
-                </Td>
-              </Tr>
-            </Tbody>
+                </Th>
+                <Th>Usuário</Th>
+                <Th>Data de cadastro</Th>
+                <Th>Editar</Th>
+              </Thead>
+
+              <Tbody>
+                <Tr>
+                  <Td px="6">
+                    <Checkbox colorScheme="pink" />
+                  </Td>
+                  <Td>
+                    <Box>
+                      <Text fontWeight="bold">Erick Marques</Text>
+                      <Text fontSize="sm" color="gray.300">erick.marquesc@hotmail.com</Text>
+                    </Box>
+                  </Td>
+                  <Td>19.Maio.2022</Td>
+                  <Td>
+                    <CTAButton icon={RiPencilLine}>Editar</CTAButton>
+                  </Td>
+                </Tr>
+              </Tbody>
+            </>
           </Table>
+          <Pagination />
         </Box>
       </Flex>
     </Box>
