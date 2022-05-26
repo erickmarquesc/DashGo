@@ -62,13 +62,17 @@ const series = [
 export default function dashboard() {
   return (
     <Flex direction="column" h="100vh">
+
       <Header />
+
       <Flex w="100%" my="6" maxWidth={1480} mx="auto" px="6">
+
         <Sidebar />
 
         <SimpleGrid flex="1" gap="4" minChildWidth="320px" alignItems="flex-start">
+          
           <Box
-            p="8"
+            p={["6", "8"]}
             bg="gray.800"
             borderRadius={8}
           >
@@ -77,7 +81,7 @@ export default function dashboard() {
           </Box>
 
           <Box
-            p="8"
+            p={["6", "8"]}
             bg="gray.800"
             borderRadius={8}
           >
@@ -85,8 +89,11 @@ export default function dashboard() {
             <Chart options={options} series={series} type="area" height={160} />
 
           </Box>
+
         </SimpleGrid>
+
       </Flex>
+
     </Flex>
   );
 }
