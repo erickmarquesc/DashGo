@@ -14,11 +14,12 @@ export function Input({ name, label, ...rest }: IInputProps) {
         id={name}
         focusBorderColor="pink.500"
         bgColor='gray.900'
-        variant='filled' // tipo do imput
+        variant='filled' // tipo do estilo do imput
+        size='lg'
         _hover={{
+          // Quando o input estiver com estado hover não quero que mude a cor de fundo
           bgColor: 'gray.900'
         }}
-        size='lg'
         {...rest}
       />
     </FormControl>
