@@ -16,3 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 };
 
 export default MyApp;
+
+/* resetCSS remove todos as estilos próprios/padrão, 
+ * ele já vem por padrão como TRUE então não é necessário declara-lo,
+ * só serve para identifica-lo como FALSE.
+ * Assim ele pega todos os estilos padrões.
+ */
