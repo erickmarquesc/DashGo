@@ -23,6 +23,7 @@ export default function UserList() {
           <Flex mb="8" justifyContent="space-between" align="center">
 
             <Heading size="lg" fontWeight="normal">Usuários</Heading>
+            
             <Link href="/users/create" passHref>
               <CTAButton icon={RiAddLine}>Criar usuário</CTAButton>
             </Link>
@@ -32,7 +33,6 @@ export default function UserList() {
           <Flex m={["0", "8"]} justifyContent="flex-start" align="center">
 
             <CTAButton m={["2", "8"]} icon={RiCheckboxMultipleFill}>Selecionar todos</CTAButton>
-            <CTAButton icon={RiTeamLine}>Mostrar novos</CTAButton>
 
           </Flex>
 

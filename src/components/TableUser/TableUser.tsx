@@ -78,7 +78,6 @@ export function TableUser() {
 
         </Tr>
 
-
       </Tbody>
 
     </Table>
