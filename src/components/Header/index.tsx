@@ -17,7 +17,7 @@ export function Header() {/* Compoenente Header */
 
   return (
     <Flex
-      as="header"
+      as="header" // Transforma a div em um headr pera o html
       w="100%"
       maxW={1480}
       h="20"
