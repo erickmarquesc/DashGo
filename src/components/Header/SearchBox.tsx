@@ -4,7 +4,7 @@ import { RiSearchLine } from "react-icons/ri";
 export function SearchBox() {
   return (
     <Flex
-      as="label"
+      as="label" // como label o input dentro desse flex recebe foco quando esse componente é clicado
       flex="1"
       py="4"
       px="8"
