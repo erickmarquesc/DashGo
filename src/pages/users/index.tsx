@@ -1,12 +1,11 @@
-import { Box, Checkbox, Flex, Heading, Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
-import Link from "next/link";
-import { RiAddLine, RiCheckboxMultipleFill, RiTeamLine } from "react-icons/ri";
-import { CTAButton } from "../../components/CTAButton";
-import { Header } from "../../components/Header";
-import { Pagination } from "../../components/Pagination";
-import { Sidebar } from "../../components/Sidebar";
+import { TableHeader } from "../../components/TableUser/TableHeader";
 import { TableUser } from "../../components/TableUser/TableUser";
-
+import { Pagination } from "../../components/Pagination";
+import { RiCheckboxMultipleFill } from "react-icons/ri";
+import { CTAButton } from "../../components/CTAButton";
+import { Sidebar } from "../../components/Sidebar";
+import { Header } from "../../components/Header";
+import { Box, Flex } from "@chakra-ui/react";
 
 export default function UserList() {
   return (
@@ -20,15 +19,7 @@ export default function UserList() {
 
         <Box bg="gray.800" flex="1" borderRadius={8} p="8">
 
-          <Flex mb="8" justifyContent="space-between" align="center">
-
-            <Heading size="lg" fontWeight="normal">Usuários</Heading>
-            
-            <Link href="/users/create" passHref>
-              <CTAButton icon={RiAddLine}>Criar usuário</CTAButton>
-            </Link>
-
-          </Flex>
+          <TableHeader title="Usuários" button={true} />
 
           <Flex m={["0", "8"]} justifyContent="flex-start" align="center">
 
@@ -37,10 +28,10 @@ export default function UserList() {
           </Flex>
 
           <TableUser />
-
           <Pagination />
+
         </Box>
       </Flex>
     </Box>
-  )
-}
+  );
+};

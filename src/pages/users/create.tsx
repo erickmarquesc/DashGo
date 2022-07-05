@@ -1,8 +1,9 @@
-import { Box, Button, Divider, Flex, Heading, HStack, SimpleGrid, VStack } from "@chakra-ui/react";
-import Link from "next/link";
-import { Header } from "../../components/Header";
+import { Box, Button, Divider, Flex, HStack, SimpleGrid, VStack } from "@chakra-ui/react";
+import { TableHeader } from "../../components/TableUser/TableHeader";
 import { Input } from "../../components/Form/Input";
 import { Sidebar } from "../../components/Sidebar";
+import { Header } from "../../components/Header";
+import Link from "next/link";
 
 export default function CreateUser() {
   return (
@@ -13,10 +14,12 @@ export default function CreateUser() {
         <Sidebar />
 
         <Box bg="gray.800" flex="1" borderRadius={8} p={["6", "8"]}>
-          <Heading size="lg" fontWeight="normal">Criar usuário</Heading>
+
+          <TableHeader title="Criar usuário" />
           <Divider my="6" borderColor="gray.700" />
 
           <VStack spacing={["6", "8"]}>
+
             <SimpleGrid minChildWidth="240px" spacing={["6", "8"]} w="100%">
               <Input name="name" label="Nome completo" />
               <Input name="email" type="email" label="E-mail" />
@@ -37,8 +40,9 @@ export default function CreateUser() {
               <Button colorScheme="pink">Salvar</Button>
             </HStack>
           </Flex>
+
         </Box>
       </Flex>
     </Box>
-  )
-}
+  );
+};
