@@ -1,5 +1,5 @@
-import { Flex, Stack, Text } from "@chakra-ui/react";
 import { SigInForm } from "../components/Form/SigInForm";
+import { Flex, Text } from "@chakra-ui/react";
 
 export default function SigIn() {
   return (
@@ -17,4 +17,4 @@ export default function SigIn() {
 
     </Flex>
   );
-}
+};

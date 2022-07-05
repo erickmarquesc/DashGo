@@ -82,4 +82,4 @@ export function TableUser() {
 
     </Table>
   );
-}
+};

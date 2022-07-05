@@ -29,7 +29,6 @@ export function PaginationItem({ isCurrent = false, number }: IPaginationItemPro
     bg="gray.700"
     _hover={{
       bg: "gray.500",
-      cursor: 'default',
     }}
   >
     {number}

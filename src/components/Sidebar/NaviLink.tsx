@@ -6,7 +6,8 @@ interface INaviLinkProps extends LinkProps {
   icon: ElementType;
   children: string;
   href: string;
-}
+};
+
 export function NavLink({ icon, children, href, ...rest }: INaviLinkProps) {
   return (
     <ActiveLink href={href} passHref>
@@ -16,4 +17,4 @@ export function NavLink({ icon, children, href, ...rest }: INaviLinkProps) {
       </ChakraLink>
     </ActiveLink>
   );
-}
+};

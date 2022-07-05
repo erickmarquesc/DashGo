@@ -1,7 +1,7 @@
-import { AppProps } from 'next/app';
+import { SiderbarDrawerProvider } from '../contexts/SidebarDrawerContext';
 import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '../styles/theme';
-import { SiderbarDrawerProvider } from '../contexts/SidebarDrawerContext';
+import { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

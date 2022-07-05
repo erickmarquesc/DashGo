@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 const Chart = dynamic(() => import('react-apexcharts'), {
   ssr: false, // com isso o gráfico nunca será rodado no lado do servidor so no navegador 
-})
+});
 
 const options = { // estilo do gráfico
   chart: {
@@ -76,4 +76,4 @@ export function Grafico({ title }: IGrafico) {
 
     </Box>
   );
-}
+};

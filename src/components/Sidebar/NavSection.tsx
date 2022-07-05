@@ -1,12 +1,10 @@
-import { Box, Stack, Icon, Text } from "@chakra-ui/react";
-import Link from "next/link";
+import { Box, Stack, Text } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import { RiDashboardLine, RiContactsLine } from "react-icons/ri";
 
 interface INavSectionProps{
   title: string;
   children: ReactNode;
-}
+};
 
 export function NavSection({title, children}: INavSectionProps) {
   return (
@@ -17,4 +15,4 @@ export function NavSection({title, children}: INavSectionProps) {
       </Stack>
     </Box>
   );
-}
+};

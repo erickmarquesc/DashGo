@@ -2,7 +2,7 @@ import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
 
 interface IProfileProps{
   showProfileData: boolean;
-}
+};
 export function Profile({showProfileData}: IProfileProps) {
   return (
     <Flex align="center">
@@ -15,4 +15,4 @@ export function Profile({showProfileData}: IProfileProps) {
       <Avatar size="md" name="Erick Marques" src="https://avatars.githubusercontent.com/u/56804790?v=4" />
     </Flex>
   );
-}
+};

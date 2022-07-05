@@ -5,7 +5,7 @@ import { ElementType, ReactNode } from "react";
 interface ICTAButtonProps extends ButtonProps{
   icon: ElementType;
   children: ReactNode;
-}
+};
 
 export function CTAButton({icon, children, ...rest}:ICTAButtonProps) {
   return (
@@ -21,4 +21,4 @@ export function CTAButton({icon, children, ...rest}:ICTAButtonProps) {
       {children}
     </Button >
   );
-}
+};
