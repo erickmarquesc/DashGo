@@ -1,4 +1,4 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, Divider, Box } from "@chakra-ui/react";
 import { RiAddLine } from "react-icons/ri";
 import { CTAButton } from "../CTAButton";
 import Link from "next/link";
@@ -10,16 +10,20 @@ interface ITableHeaderProps {
 
 export function TableHeader({ title, button = false }: ITableHeaderProps) {
   return (
-    <Flex mb="8" justifyContent="space-between" align="center">
+    <Box>
 
-      <Heading size="lg" fontWeight="normal">{title}</Heading>
+      <Flex mb="8" justifyContent="space-between" align="center">
 
-      {button && (
-        <Link href="/users/create" passHref>
-          <CTAButton icon={RiAddLine}>Criar usuário</CTAButton>
-        </Link>
-      )}
+        <Heading size="lg" fontWeight="normal">{title}</Heading>
 
-    </Flex>
+        {button && (
+          <Link href="/users/create" passHref>
+            <CTAButton icon={RiAddLine}>Criar usuário</CTAButton>
+          </Link>
+        )}
+      </Flex>
+      <Divider my="6" borderColor="gray.700" />
+      
+    </Box>
   );
 };

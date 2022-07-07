@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Flex, HStack, SimpleGrid, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, HStack, SimpleGrid, VStack } from "@chakra-ui/react";
 import { TableHeader } from "../../components/TableUser/TableHeader";
 import { Input } from "../../components/Form/Input";
 import { Sidebar } from "../../components/Sidebar";
@@ -16,7 +16,6 @@ export default function CreateUser() {
         <Box bg="gray.800" flex="1" borderRadius={8} p={["6", "8"]}>
 
           <TableHeader title="Criar usuário" />
-          <Divider my="6" borderColor="gray.700" />
 
           <VStack spacing={["6", "8"]}>
 
