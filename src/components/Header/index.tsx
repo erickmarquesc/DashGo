@@ -45,7 +45,6 @@ export function Header() {/* Compoenente Header */
       {/* LOGO */}
       <Logo />
 
-
       {/* PESQUISA */}
       {/* A barra só aparece caso a tela seja >= a lg | Por padrão ela aparece */}
       {isWideVersion && <SearchBox />}

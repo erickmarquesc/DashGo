@@ -3,7 +3,7 @@ import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
 
 interface IActiveLinkProps extends LinkProps {
-  children: ReactElement;
+  children: ReactElement; // Precisa ser um componente React
   shouldMatchExactHref?: boolean;
 }
 
@@ -12,11 +12,13 @@ export function ActiveLink({ children, shouldMatchExactHref = false, ...rest }: 
 
   let isActive = false;
 
-  if (shouldMatchExactHref && (asPath === rest.href || asPath === rest.as)) {
+  if (shouldMatchExactHref &&
+    (asPath === rest.href || asPath === rest.as)) {
     isActive = true;
   }
 
-  if (!shouldMatchExactHref && (asPath.startsWith(String(rest.href)) || asPath.startsWith(String(rest.as)))) {
+  if (!shouldMatchExactHref &&
+    (asPath.startsWith(String(rest.href)) || asPath.startsWith(String(rest.as)))) {
     isActive = true;
   }
 

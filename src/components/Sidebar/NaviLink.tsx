@@ -3,7 +3,7 @@ import { ActiveLink } from "./ActiveLink";
 import { ElementType } from "react";
 
 interface INaviLinkProps extends LinkProps {
-  icon: ElementType;
+  icon: ElementType; // Aceita que eu apenas referencie o componente e não preciso "tag-alo"
   children: string;
   href: string;
 };
@@ -11,9 +11,15 @@ interface INaviLinkProps extends LinkProps {
 export function NavLink({ icon, children, href, ...rest }: INaviLinkProps) {
   return (
     <ActiveLink href={href} passHref>
-      <ChakraLink display="flex" alignItems="center" {...rest}>
+      <ChakraLink
+        display="flex"
+        alignItems="center"
+        {...rest}>
+
         <Icon as={icon} fontSize="20" />
+
         <Text ml="4" fontWeight="medium">{children}</Text>
+        
       </ChakraLink>
     </ActiveLink>
   );

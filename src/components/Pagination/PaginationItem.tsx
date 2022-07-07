@@ -6,7 +6,7 @@ interface IPaginationItemProps {
 }
 
 export function PaginationItem({ isCurrent = false, number }: IPaginationItemProps) {
-  if (isCurrent) {
+  if (isCurrent) { // Caso esteja/seja a página atual
     return (<Button
       size="sm"
       fontSize="xs"
