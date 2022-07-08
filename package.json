@@ -15,7 +15,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@hookform/error-message": "^2.0.0",
-    "@hookform/resolvers": "^2.8.10",
+    "@hookform/resolvers": "^2.9.5",
     "apexcharts": "^3.35.2",
     "axios": "^0.27.2",
     "framer-motion": "^6",
