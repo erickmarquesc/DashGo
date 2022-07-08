@@ -1,9 +1,9 @@
-import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+import { Flex, SimpleGrid } from "@chakra-ui/react";
 import { Grafico } from "../components/GraficoChart";
 import { Sidebar } from "../components/Sidebar";
 import { Header } from "../components/Header";
 
-export default function dashboard() {
+export default function Dashboard() {
   return (
     <Flex direction="column" h="100vh">
 
