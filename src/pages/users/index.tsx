@@ -6,8 +6,16 @@ import { CTAButton } from "../../components/CTAButton";
 import { Sidebar } from "../../components/Sidebar";
 import { Header } from "../../components/Header";
 import { Box, Flex } from "@chakra-ui/react";
+import { useEffect } from "react";
 
 export default function UserList() {
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/users')
+      .then(response => response.json())
+      .then(data => console.log(data))
+  }, []);
+
   return (
     <Box>
 
