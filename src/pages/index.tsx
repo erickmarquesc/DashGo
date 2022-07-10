@@ -1,5 +1,8 @@
 import { SigInForm } from "../components/Form/SigInForm";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, IconButton, Stack, Text } from "@chakra-ui/react";
+import { RiGithubLine, RiLinkedinLine } from "react-icons/ri";
+import Link from "next/link";
+
 
 export default function SigIn() {
   return (
@@ -12,9 +15,30 @@ export default function SigIn() {
     >
 
       <SigInForm />
-      <Text mt="20" color="gray.600">Aplicação criada por Erick Marques [git]</Text>
-      <Text color="gray.600">Rocketseat</Text>
+      <Text mt="20" mb="5" color="gray.600">Aplicação criada por Erick Marques</Text>
+      <Stack spacing={2} direction={"row"}>
 
+        <Link href="https://github.com/erickmarquesc">
+          <IconButton
+            variant='outline'
+            colorScheme='pink'
+            aria-label='GIRHUB'
+            size='sm'
+            fontSize={25}
+            icon={<RiGithubLine />}
+          />
+        </Link>
+        <Link href="https://www.linkedin.com/in/erick-marques-cabral-999b151b4/">
+          <IconButton
+            variant='outline'
+            colorScheme='pink'
+            aria-label='GIRHUB'
+            size='sm'
+            fontSize={25}
+            icon={<RiLinkedinLine />}
+          />
+        </Link>
+      </Stack>
     </Flex>
   );
 };
