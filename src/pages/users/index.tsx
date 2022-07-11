@@ -6,18 +6,11 @@ import { CTAButton } from "../../components/CTAButton";
 import { Sidebar } from "../../components/Sidebar";
 import { Header } from "../../components/Header";
 import { Box, Flex, Spinner, Text } from "@chakra-ui/react";
-import { useQuery } from "react-query";
+import { useUsers } from "../../services/hooks/useUsers";
 
 export default function UserList() {
 
-  const { isLoading, error } = useQuery('users', async () => {
-    const response = await fetch('http://localhost:3000/api/users');
-    const data = await response.json();
-    return data;
-  },{
-    staleTime: 1000 * 5,
-  });
-
+  const { isLoading, error, isFetching } = useUsers();
 
   return (
     <Box>
@@ -29,9 +22,9 @@ export default function UserList() {
         <Sidebar />
 
         <Box bg="gray.800" flex="1" borderRadius={8} p="8">
-
-          <TableHeader title="Usuários" button={true} />
-
+          
+          <TableHeader title="Usuários" fetching={isFetching} loading={isLoading} button={true} />
+          
           <Flex m={["0", "8"]} justifyContent="flex-start" align="center">
 
             <CTAButton m={["2", "8"]} icon={RiCheckboxMultipleFill}>Selecionar todos</CTAButton>

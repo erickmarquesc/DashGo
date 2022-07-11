@@ -1,17 +1,11 @@
-import { Table, Tbody, Tr, Td, Checkbox, Box, Text, useBreakpointValue, useRangeSlider } from "@chakra-ui/react";
+import { Table, Tbody, Tr, Td, Checkbox, Box, Text, useBreakpointValue } from "@chakra-ui/react";
 import { RiPencilLine } from "react-icons/ri";
-import { useQuery } from "react-query";
+import { useUsers } from "../../services/hooks/useUsers";
 import { CTAButton } from "../CTAButton";
 
 export function TableUser() {
 
-  const { data } = useQuery('users', async () => {
-    const response = await fetch('http://localhost:3000/api/users');
-    const data = await response.json();
-
-    return data;
-
-  });
+  const { data } = useUsers();
 
   const isWideVersion = useBreakpointValue({
     base: false,
