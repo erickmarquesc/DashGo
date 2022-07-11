@@ -2,21 +2,28 @@ import { SiderbarDrawerProvider } from '../contexts/SidebarDrawerContext';
 import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '../styles/theme';
 import { AppProps } from 'next/app';
-import { makeServer } from '../components/mirage';
+import { makeServer } from '../services/mirage';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import {ReactQueryDevtools} from 'react-query/devtools';
 
 if (process.env.NODE_ENV === 'development') { // Essa variável é setada automaticamente pelo React
   makeServer();
 };
 
+const queryClient = new QueryClient();
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider resetCSS theme={theme}>
-      <SiderbarDrawerProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider resetCSS theme={theme}>
+        <SiderbarDrawerProvider>
 
-        <Component {...pageProps} />
+          <Component {...pageProps} />
 
-      </SiderbarDrawerProvider>
-    </ChakraProvider>
+        </SiderbarDrawerProvider>
+      </ChakraProvider>
+      <ReactQueryDevtools/>
+    </QueryClientProvider>
   );
 };
 

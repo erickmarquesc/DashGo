@@ -3,7 +3,7 @@ import {faker} from '@faker-js/faker';
 
 type User = {
   name: string,
-  emial: string,
+  email: string,
   created_at: string,
 };
 
@@ -18,10 +18,10 @@ export function makeServer() {
         name(i: number) {
           return `Usuário ${i + 1}`
         },
-        emial() { 
+        email() { 
           return faker.internet.email().toLowerCase();
         },
-        createAt() { 
+        createdAt() { 
           return faker.date.recent(10);
         },
       })

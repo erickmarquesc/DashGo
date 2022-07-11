@@ -1,8 +1,17 @@
-import { Table, Tbody, Tr, Td, Checkbox, Box, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Table, Tbody, Tr, Td, Checkbox, Box, Text, useBreakpointValue, useRangeSlider } from "@chakra-ui/react";
 import { RiPencilLine } from "react-icons/ri";
+import { useQuery } from "react-query";
 import { CTAButton } from "../CTAButton";
 
 export function TableUser() {
+
+  const { data } = useQuery('users', async () => {
+    const response = await fetch('http://localhost:3000/api/users');
+    const data = await response.json();
+
+    return data;
+
+  });
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -15,68 +24,46 @@ export function TableUser() {
 
       <Tbody>
 
-        <Tr>
+        {data.users.map(user => {
+          return (
+            <Tr key={user.id}>
 
-          <Td px={["2", "2", "6"]}>
-            <Checkbox colorScheme="pink" />
-          </Td>
+              <Td px={["2", "2", "6"]}>
+                <Checkbox colorScheme="pink" />
+              </Td>
 
-          <Td>
-            <Box>
+              <Td>
+                <Box>
 
-              <Text fontWeight="bold">Erick Marques Cabral</Text>
-              <Text fontSize="sm" color="gray.300">erick.marquesc@hotmail.com</Text>
+                  <Text fontWeight="bold">{user.name}</Text>
+                  <Text fontSize="sm" color="gray.300">{user.email}</Text>
 
-              {!isWideVersion && (<CTAButton icon={RiPencilLine} width="100%" maxWidth="190">Editar</CTAButton>)}
+                  {!isWideVersion && (<CTAButton icon={RiPencilLine} width="100%" maxWidth="190">Editar</CTAButton>)}
 
-            </Box>
-          </Td>
+                </Box>
+              </Td>
 
-          {isWideVersion && (
-            <Td>
-              <Box>
-                <Text>19.Maio.2022</Text>
-                <Text fontSize="sm" color="gray.300">Data de cadastro</Text>
-              </Box>
-            </Td>
-          )}
+              {isWideVersion && (
+                <Td>
+                  <Box>
+                    <Text>
+                      {new Date(user.createdAt).toLocaleDateString('pt-BR', {
+                        day: '2-digit',
+                        month: 'long',
+                        year: 'numeric',
+                      })}</Text>
+                    <Text fontSize="sm" color="gray.300">Data de cadastro</Text>
+                  </Box>
+                </Td>
+              )}
 
-          <Td>
-            {isWideVersion && (<CTAButton icon={RiPencilLine}>Editar</CTAButton>)}
-          </Td>
+              <Td>
+                {isWideVersion && (<CTAButton icon={RiPencilLine}>Editar</CTAButton>)}
+              </Td>
 
-        </Tr>
-
-        <Tr>
-
-          <Td px={["2", "2", "6"]}>
-            <Checkbox colorScheme="pink" />
-          </Td>
-
-          <Td>
-            <Box>
-              <Text fontWeight="bold">Guilherme Messias</Text>
-              <Text fontSize="sm" color="gray.300">guilherme.messias@hotmail.com</Text>
-              {!isWideVersion && (<CTAButton icon={RiPencilLine} width="100%" maxWidth="190">Editar</CTAButton>)}
-
-            </Box>
-          </Td>
-
-          {isWideVersion && (
-            <Td>
-              <Box>
-                <Text>19.Maio.2022</Text>
-                <Text fontSize="sm" color="gray.300">Data de cadastro</Text>
-              </Box>
-            </Td>
-          )}
-
-          <Td>
-            {isWideVersion && (<CTAButton icon={RiPencilLine}>Editar</CTAButton>)}
-
-          </Td>
-
-        </Tr>
+            </Tr>
+          )
+        })}
 
       </Tbody>
 

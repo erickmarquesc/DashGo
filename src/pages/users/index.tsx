@@ -5,16 +5,19 @@ import { RiCheckboxMultipleFill } from "react-icons/ri";
 import { CTAButton } from "../../components/CTAButton";
 import { Sidebar } from "../../components/Sidebar";
 import { Header } from "../../components/Header";
-import { Box, Flex } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { Box, Flex, Spinner, Text } from "@chakra-ui/react";
+import { useQuery } from "react-query";
 
 export default function UserList() {
 
-  useEffect(() => {
-    fetch('http://localhost:3000/api/users')
-      .then(response => response.json())
-      .then(data => console.log(data))
-  }, []);
+  const { isLoading, error } = useQuery('users', async () => {
+    const response = await fetch('http://localhost:3000/api/users');
+    const data = await response.json();
+    return data;
+  },{
+    staleTime: 1000 * 5,
+  });
+
 
   return (
     <Box>
@@ -35,8 +38,20 @@ export default function UserList() {
 
           </Flex>
 
-          <TableUser />
-          <Pagination />
+          {isLoading ? (
+            <Flex justify={"center"}>
+              <Spinner />
+            </Flex>
+          ) : error ? (
+            <Flex justify={"center"}>
+              <Text>Eita Giovana! Deu algum erro ao carregar a tabela de usuários.</Text>
+            </Flex>
+          ) : (
+            <>
+              <TableUser />
+              <Pagination />
+            </>
+          )}
 
         </Box>
       </Flex>
