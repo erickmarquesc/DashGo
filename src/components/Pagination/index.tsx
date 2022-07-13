@@ -5,7 +5,7 @@ interface PaginationProps {
   totalCountOfRegisters: number;
   registersPerPage?: number;
   currentPage?: number;
-
+  onPageChange: (page: number) => void;
 }
 
 const siblingsCount = 1;
@@ -18,7 +18,7 @@ function generatePagesArray(from: number, to: number) {
 };
 
 export function Pagination(
-  { totalCountOfRegisters, registersPerPage = 10, currentPage = 1 }: PaginationProps) {
+  { totalCountOfRegisters, registersPerPage = 10, currentPage = 1, onPageChange }: PaginationProps) {
 
   /* ULTIMA PÁGINA POSSÍVEL */
   const lastPage = Math.floor(totalCountOfRegisters / registersPerPage);
@@ -49,7 +49,7 @@ export function Pagination(
         {/* Caso tenha mais de 2 páginas anteriores */}
         {currentPage > (siblingsCount + 1) &&
           <>
-            <PaginationItem number={1} />
+            <PaginationItem onPageChange={onPageChange} number={1} />
             {currentPage > (siblingsCount + 2) && (
               <Text color={'pink.300'} width="8" textAlign="center">...</Text>
             )
@@ -60,20 +60,20 @@ export function Pagination(
         {/* Mostra a página anterior */}
         {previousPages.length > 0
           && previousPages.map(page => {
-            return <PaginationItem key={page} number={page} />
+            return <PaginationItem onPageChange={onPageChange} key={page} number={page} />
           })
         }
 
         {/* Página atual */}
-        <PaginationItem number={currentPage} isCurrent />
+        <PaginationItem onPageChange={onPageChange} number={currentPage} isCurrent />
 
         {/* Ultima página */}
         {nextPages.length > 0
           && nextPages.map(page => {
-            return <PaginationItem key={page} number={page} />
+            return <PaginationItem onPageChange={onPageChange} key={page} number={page} />
           })
         }
-        
+
         {/* Caso tenha mais de 2 páginas seguintes */}
         {(currentPage + siblingsCount) < lastPage &&
           <>
@@ -81,7 +81,7 @@ export function Pagination(
               <Text color={'pink.300'} width="8" textAlign="center">...</Text>
             )
             }
-            <PaginationItem number={lastPage} />
+            <PaginationItem onPageChange={onPageChange} number={lastPage} />
           </>
         }
       </Stack>
