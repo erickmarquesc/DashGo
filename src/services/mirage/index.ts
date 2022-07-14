@@ -1,4 +1,4 @@
-import { createServer, Factory, Model, Response } from "miragejs";
+import { ActiveModelSerializer, createServer, Factory, Model, Response } from "miragejs";
 import { faker } from '@faker-js/faker';
 
 type User = {
@@ -9,6 +9,10 @@ type User = {
 
 export function makeServer() {
   const server = createServer({
+    serializers:{
+      application: ActiveModelSerializer,
+    },
+    
     models: { // São os tipos dos dados que ficarão dentro do banco de dados fake 
       user: Model.extend<Partial<User>>({})
     },
@@ -22,13 +26,17 @@ export function makeServer() {
           return faker.internet.email().toLowerCase();
         },
         createdAt() {
-          return faker.date.recent(10);
+          return new Date(faker.date.recent(10)).toLocaleDateString('pt-BR', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric',
+          })
         },
       })
     },
 
     seeds(server) {
-      server.createList('user', 60);
+      server.createList('user', 5);
     },
 
     routes() { // Shorthands do mirage para controlar rotas

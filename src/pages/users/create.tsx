@@ -1,10 +1,14 @@
 import { Box, Button, Flex, HStack, SimpleGrid, VStack } from "@chakra-ui/react";
 import { TableHeader } from "../../components/TableUser/TableHeader";
+import { queryClient } from "../../services/queryCliente";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../../components/Form/Input";
 import { Sidebar } from "../../components/Sidebar";
 import { Header } from "../../components/Header";
+import { useMutation } from "react-query";
+import { api } from "../../services/api";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import * as yup from "yup";
 
@@ -18,11 +22,27 @@ type CreateUseFormData = {
 const CreateUseFormSchema = yup.object().shape({
   name: yup.string().required('Nome é obrigatório'),
   email: yup.string().required('E-mail é obrigatório').email('E-mail inválido'),
-  password: yup.string().required('Senha é obrigtória').min(6,'A senha precisa ter no minímo 6 caracteres'),
+  password: yup.string().required('Senha é obrigtória').min(6, 'A senha precisa ter no minímo 6 caracteres'),
   password_confirmation: yup.string().oneOf([null, yup.ref("password")], 'As senhas precisam ser iguais')
 });
 
 export default function CreateUser() {
+
+  const router = useRouter();
+
+  const createUser = useMutation(async (user: CreateUseFormData) => {
+    const response = await api.post('users', {
+      user: {
+        ...user,
+        created_at: new Date()
+      }
+    })
+    return response.data.user;
+  },{
+    onSuccess:()=>{
+      queryClient.invalidateQueries('users');
+    }
+  });
 
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(CreateUseFormSchema),
@@ -31,8 +51,9 @@ export default function CreateUser() {
   const { errors } = formState;
 
   const handleCreateUser: SubmitHandler<CreateUseFormData> = async (values) => {
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    console.log(values);
+    await createUser.mutateAsync(values);
+
+    router.push('/users');
   };
 
   return (

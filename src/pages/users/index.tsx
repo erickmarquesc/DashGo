@@ -1,30 +1,31 @@
-import { TableHeader } from "../../components/TableUser/TableHeader";
-import { Pagination } from "../../components/Pagination";
+import { Box, Checkbox, Flex, Link, Spinner, Table, Tbody, Td, Text, Tr, useBreakpointValue } from "@chakra-ui/react";
 import { RiCheckboxMultipleFill, RiPencilLine } from "react-icons/ri";
+import { TableHeader } from "../../components/TableUser/TableHeader";
+import { queryClient } from "../../services/queryCliente";
+import { Pagination } from "../../components/Pagination";
+import { useUsers } from "../../services/hooks/useUsers";
 import { CTAButton } from "../../components/CTAButton";
 import { Sidebar } from "../../components/Sidebar";
 import { Header } from "../../components/Header";
-import { Box, Checkbox, Flex, Link, Spinner, Table, Tbody, Td, Text, Tr, useBreakpointValue } from "@chakra-ui/react";
-import { useUsers } from "../../services/hooks/useUsers";
-import { useState } from "react";
-import { queryClient } from "../../services/queryCliente";
 import { api } from "../../services/api";
+import { useState } from "react";
 
 export default function UserList() {
   const [page, setPage] = useState(1);
 
   const { data, isLoading, error, isFetching } = useUsers(page);
+
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
     md: true,
   });
 
-  async function handlePrefetchUser(userId: number) {
+  async function handlePrefetchUser(userId: string) {
     await queryClient.prefetchQuery(['user', userId], async () => {
       const response = await api.get(`users/${userId}`);
       return response.data;
-    },{
+    }, {
       staleTime: 1000 * 60 * 10,
     });
   }
@@ -85,12 +86,7 @@ export default function UserList() {
                         {isWideVersion && (
                           <Td>
                             <Box>
-                              <Text>
-                                {new Date(user.createdAt).toLocaleDateString('pt-BR', {
-                                  day: '2-digit',
-                                  month: 'long',
-                                  year: 'numeric',
-                                })}</Text>
+                              <Text>{user.created_at}</Text>
                               <Text fontSize="sm" color="gray.300">Data de cadastro</Text>
                             </Box>
                           </Td>
